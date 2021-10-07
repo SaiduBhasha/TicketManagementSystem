@@ -19,7 +19,7 @@ var apiRoutes = [
           customerName: Joi.string().trim().min(3).max(100).required(),
           ticketPrice: Joi.number().required(),
           performanceTitle: Joi.string().trim().required(),
-          performanceTime: Joi.string().trim().required().example('bhasha'),
+          performanceTime: Joi.string().trim().required(),
           creationDate: Joi.date().optional(),
         },
         // headers: Joi.object({
