@@ -5,11 +5,20 @@
  **/
 
 var TicketModel = require('../models/ticket');
+var auth = require('./auth');
 var Boom = require('boom');
 var _ = require('lodash');
-var moment=require('moment');
+var moment = require('moment');
+const authString = '5BaCPd450912376#u89o0';
 module.exports = {
-  create: function (request, reply) {
+  create: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     // Create mongodb ticket object to save it into database
     var ticket = new TicketModel(request.payload);
     //Call save methods to save data into database and pass callback methods to handle error
@@ -27,7 +36,14 @@ module.exports = {
       }
     });
   },
-  delete: function (request, reply) {
+  delete: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     TicketModel.findOneAndRemove({ _id: request.params.id }, function (error) {
       if (error) {
         reply({
@@ -43,7 +59,14 @@ module.exports = {
       }
     });
   },
-  updateById: function (request, reply) {
+  updateById: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     TicketModel.findOneAndUpdate(
       { _id: request.params.id },
       request.payload,
@@ -64,7 +87,14 @@ module.exports = {
       }
     );
   },
-  fetchById: function (request, reply) {
+  fetchById: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     //Finding ticket for particular ticketID
     TicketModel.find({ _id: request.params.id }, function (error, data) {
       if (error) {
@@ -90,7 +120,15 @@ module.exports = {
       }
     });
   },
-  fetchAll: function (request, reply) {
+  fetchAll: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
+    console.log(request.headers['auth-token']);
     //Fetch all data from mongodb Ticket Collection
     TicketModel.find({}, function (error, data) {
       if (error) {
@@ -108,7 +146,14 @@ module.exports = {
       }
     });
   },
-  earned: function (request, reply) {
+  earned: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     var query = request.query;
     console.log(query);
     var fromDate = new Date(
@@ -257,7 +302,14 @@ module.exports = {
       });
     }
   },
-  visited: function (request, reply) {
+  visited: async function (request, reply) {
+    var tokenVal = await auth.verifyToken(authString);
+    if (!tokenVal) {
+      return reply({
+        statusCode: 500,
+        message: 'Authentication Failed',
+      });
+    }
     var query = request.query;
     var fromDate = new Date(
       new Date(new Date(query.fromDate)).setHours(0, 0, 0, 0)

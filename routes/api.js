@@ -19,9 +19,12 @@ var apiRoutes = [
           customerName: Joi.string().trim().min(3).max(100).required(),
           ticketPrice: Joi.number().required(),
           performanceTitle: Joi.string().trim().required(),
-          performanceTime: Joi.string().trim().required().example("bhasha"),
+          performanceTime: Joi.string().trim().required().example('bhasha'),
           creationDate: Joi.date().optional(),
         },
+        // headers: Joi.object({
+        //   'auth-token': Joi.string().required(),
+        // }).options({ allowUnknown: true }),
       },
     },
   },
@@ -37,6 +40,9 @@ var apiRoutes = [
         params: {
           id: Joi.string().required(),
         },
+        // headers: Joi.object({
+        //   'auth-token': Joi.string().required(),
+        // }).options({ allowUnknown: true }),
       },
     },
   },
@@ -61,6 +67,9 @@ var apiRoutes = [
           performanceTime: Joi.string().trim(),
           creationDate: Joi.date().optional(),
         },
+        // headers: Joi.object({
+        //   'auth-token': Joi.string().required(),
+        // }).options({ allowUnknown: true }),
       },
     },
   },
@@ -78,6 +87,9 @@ var apiRoutes = [
         params: {
           id: Joi.string().required(),
         },
+        // headers: Joi.object({
+        //   'auth-token': Joi.string().required(),
+        // }).options({ allowUnknown: true }),
       },
     },
   },
@@ -89,6 +101,11 @@ var apiRoutes = [
       tags: ['api'],
       description: 'Get All ticket data',
       notes: 'Get All ticket data',
+      // validate: {
+      //   headers: Joi.object({
+      //     'auth-token': Joi.string().required(),
+      //   }).options({ allowUnknown: true }),
+      // },
     },
   },
   {
@@ -122,6 +139,9 @@ var apiRoutes = [
           toDate: Joi.string(),
           method: Joi.string(),
         },
+        // headers: Joi.object({
+        //   'auth-token': Joi.string().required(),
+        // }).options({ allowUnknown: true }),
       },
     },
   },
