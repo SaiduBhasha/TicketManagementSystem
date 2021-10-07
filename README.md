@@ -1,7 +1,8 @@
 ### Our Application
 
 - Handle CRUD for an item ( we’re are going to use `ticket` )
-- Have a standard URL( “http://localhost:7002.com/api/ticket and “http://demo.com/api/ticket/:id” )
+- Handle Theatre analytics
+- Have a standard URL( “http://localhost:7002/api/ticket and “http://localhost:7002/api/ticket/:id” )
 - Use the proper HTTP verbs to make it RESTful ( GET, POST, PUT, and DELETE )
 - Return JSON data
 
