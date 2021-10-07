@@ -1,0 +1,23 @@
+{
+  "name": "bussrticketsystem",
+  "version": "0.0.1",
+  "description": "web application to manage theatre tickets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Shaik Saidu Bhasha",
+  "license": "ISC",
+  "dependencies": {
+    "good": "^8.1.2",
+    "good-console": "^5.0.0",
+    "hapi": "^8.5.1",
+    "hapi-swagger": "0.7.3",
+    "joi": "^6.4.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mongoose": "^4.0.3",
+    "nodemon": "^2.0.13"
+  }
+}
