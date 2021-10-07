@@ -32,5 +32,5 @@
   "ticketPrice": 100,
   "performanceTitle": "Avengers",
   "performanceTime": "2021/10/12 02:00:00",
-  "creationDate": "2021-09-10" or "2021-09-10T00:00:00.000+0000"
+  "creationDate": "2021-09-10" or "2021-09-10T00:00:00"
 }
